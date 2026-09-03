@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings | CKD Detector</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      background: url("/static/kidney.png") no-repeat center center fixed;
+      background-size: cover;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .settings-container {
+      margin: 120px auto 60px;
+      width: 90%;
+      max-width: 700px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(15px);
+      border-radius: 18px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      color: #00ffe1;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      margin-bottom: 30px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .setting-item:hover {
+      background: rgba(0, 255, 255, 0.12);
+      transform: scale(1.02);
+    }
+
+    label {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    input[type="range"] {
+      width: 150px;
+    }
+
+    input[type="color"] {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #00ffe1;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    .btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 25px;
+      background: linear-gradient(90deg, #00c6ff, #00ffe1);
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>🧬 CKD Detector</h2>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/predict-page">Predict</a></li>
+      <li><a href="/data">Patient Data</a></li>
+      <li><a href="/settings" class="active">Settings</a></li>
+      <li><a href="/logout" class="logout-btn">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Settings Section -->
+  <div class="settings-container">
+    <h1>⚙️ App Settings</h1>
+
+    <div class="setting-item">
+      <label>🌙 Dark Mode</label>
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-item">
+      <label>💧 Background Blur</label>
+      <input type="range" id="blurControl" min="0" max="20" value="10" />
+    </div>
+
+    <div class="setting-item">
+      <label>🎨 Accent Color</label>
+      <input type="color" id="colorPicker" value="#00ffe1" />
+    </div>
+
+    <div class="setting-item">
+      <label>🔔 Notifications</label>
+      <label class="switch">
+        <input type="checkbox" id="notifToggle" checked />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-item">
+      <label>👤 Change Username</label>
+      <input type="text" id="usernameInput" placeholder="Enter new username" style="border-radius:8px; padding:6px; border:none; width:160px;" />
+    </div>
+
+    <div class="setting-item">
+      <label>🗑️ Reset Patient History</label>
+      <button class="btn" onclick="resetData()">Clear Data</button>
+    </div>
+
+    <button class="btn" onclick="saveSettings()">💾 Save Settings</button>
+  </div>
+
+  <script>
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('change', () => {
+      document.body.style.background = darkToggle.checked
+        ? 'linear-gradient(180deg, #000, #111)'
+        : 'url("/static/kidney.png") no-repeat center center fixed';
+      document.body.style.backgroundSize = 'cover';
+    });
+
+    // Blur control
+    const blurControl = document.getElementById('blurControl');
+    blurControl.addEventListener('input', (e) => {
+      document.querySelector('.settings-container').style.backdropFilter = `blur(${e.target.value}px)`;
+    });
+
+    // Accent color change
+    const colorPicker = document.getElementById('colorPicker');
+    colorPicker.addEventListener('input', (e) => {
+      document.querySelector('h1').style.color = e.target.value;
+    });
+
+    // Save settings
+    function saveSettings() {
+      const user = document.getElementById('usernameInput').value;
+      alert(`✅ Settings Saved!\nUsername: ${user || "Unchanged"}\nTheme Color: ${colorPicker.value}`);
+    }
+
+    // Reset data
+    async function resetData() {
+      const confirmDelete = confirm("⚠️ This will permanently delete all patient data. Continue?");
+      if (!confirmDelete) return;
+
+      try {
+        const response = await fetch('/delete-all', { method: 'DELETE' });
+        const result = await response.json();
+        alert(result.message || "All patient data cleared!");
+      } catch (err) {
+        alert("❌ Error clearing data: " + err);
+      }
+    }
+  </script>
+</body>
+</html>

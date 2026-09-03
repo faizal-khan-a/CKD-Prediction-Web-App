@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    h1 { text-align: center; color: #007bff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; font-size: 14px; }
+    th { background: #e0f7ff; text-align: left; }
+    tr:nth-child(even) { background: #f2faff; }
+    .result { font-weight: bold; color: #d9534f; }
+  </style>
+</head>
+<body>
+  <h1>🩺 Patient Report</h1>
+  <table>
+    <tr><th>ID</th><td>{{ patient.id }}</td></tr>
+    <tr><th>Name</th><td>{{ patient.name }}</td></tr>
+    <tr><th>Age (yrs)</th><td>{{ patient.age }}</td></tr>
+    <tr><th>Blood Pressure (mm/Hg)</th><td>{{ patient.bp }}</td></tr>
+    <tr><th>Specific Gravity</th><td>{{ patient.sg }}</td></tr>
+    <tr><th>Albumin</th><td>{{ patient.alb }}</td></tr>
+    <tr><th>Sugar</th><td>{{ patient.sugar }}</td></tr>
+    <tr><th>Blood Glucose Random (mgs/dL)</th><td>{{ patient.glucose }}</td></tr>
+    <tr><th>Blood Urea (mgs/dL)</th><td>{{ patient.urea }}</td></tr>
+    <tr><th>Serum Creatinine (mgs/dL)</th><td>{{ patient.creatinine }}</td></tr>
+    <tr><th>Hemoglobin (gms)</th><td>{{ patient.hb }}</td></tr>
+    <tr><th>Hypertension</th><td>{{ patient.ht }}</td></tr>
+    <tr><th>Diabetes Mellitus</th><td>{{ patient.dm }}</td></tr>
+    <tr><th>Anemia</th><td>{{ patient.anemia }}</td></tr>
+    <tr><th>Prediction Result</th><td class="result">{{ patient.result }}</td></tr>
+    <tr><th>Created At</th><td>{{ patient.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</td></tr>
+  </table>
+</body>
+</html>

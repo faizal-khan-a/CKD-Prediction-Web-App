@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+
+<div class="auth-container">
+    <h2>Sign In</h2>
+
+    <form method="POST">
+
+        <label>Email Address *</label>
+        <div class="input-group">
+            <span class="input-icon">📧</span>
+            <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <label>Password *</label>
+        <div class="input-group">
+            <span class="input-icon">🔒</span>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <span class="toggle-password">👁</span>
+        </div>
+
+        <button type="submit" class="form-btn">Sign In</button>
+
+        <p>Don’t have an account? <a href="/signup">Register</a></p>
+    </form>
+</div>
+
+<script>
+const toggle = document.querySelector('.toggle-password');
+const password = document.querySelector('input[type="password"]');
+
+toggle.addEventListener('click', () => {
+    password.type = password.type === "password" ? "text" : "password";
+});
+</script>
+
+</body>
+</html>

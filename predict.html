@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CKD Detection | Predict</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <!-- 🌐 Navbar -->
+  <nav class="navbar">
+    <h2>🧬 CKD Detector</h2>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/predict-page" class="active">Predict</a></li>
+      <li><a href="/data">Patient Data</a></li>
+      <li><a href="/settings">Settings</a></li>
+      <li><a href="/logout" class="logout-btn">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🩺 Form Container -->
+  <div class="main-content">
+    <div class="container glass">
+      <h1>Chronic Kidney Disease Detection</h1>
+      <p class="subtitle">Enter patient details to predict the likelihood of CKD.</p>
+
+      <form id="predictForm" class="ckd-form">
+        <!-- ✅ Added Patient Name Field -->
+        <div class="form-group">
+          <label for="name">Patient Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter Patient Name" required />
+        </div>
+
+        <input type="number" name="Age (yrs)" placeholder="Age (yrs)" step="any" required />
+
+        <!-- 🩸 Blood Pressure -->
+        <div class="dropdown-container">
+          <input type="number" name="Blood Pressure (mm/Hg)" id="bpInput" placeholder="Blood Pressure (mm/Hg)" required />
+          <div class="dropdown" id="bpDropdown">
+            <p><span class="range low"></span> Low: Below 80 mm/Hg</p>
+            <p><span class="range normal"></span> Normal: 80–120 mm/Hg</p>
+            <p><span class="range elevated"></span> Elevated: 120–140 mm/Hg</p>
+            <p><span class="range high"></span> High Risk: Above 140 mm/Hg</p>
+          </div>
+        </div>
+
+        <!-- 💧 Specific Gravity -->
+        <div class="dropdown-container">
+          <input type="number" name="Specific Gravity" id="sgInput" placeholder="Specific Gravity" step="0.001" required />
+          <div class="dropdown" id="sgDropdown">
+            <p><span class="range low"></span> Low: Below 1.005 (Risk of CKD)</p>
+            <p><span class="range normal"></span> Normal: 1.010–1.025</p>
+            <p><span class="range high"></span> High: Above 1.030 (Possible dehydration)</p>
+          </div>
+        </div>
+
+        <!-- 🧫 Albumin -->
+        <div class="dropdown-container">
+          <input type="number" name="Albumin" id="albInput" placeholder="Albumin" step="1" required />
+          <div class="dropdown" id="albDropdown">
+            <p><span class="range normal"></span> Normal: 0–1 (Healthy kidneys)</p>
+            <p><span class="range elevated"></span> Mild: 2–3 (Possible CKD)</p>
+            <p><span class="range high"></span> High: 4–5 (High CKD risk)</p>
+          </div>
+        </div>
+
+        <!-- 🍬 Sugar -->
+        <div class="dropdown-container">
+          <input type="number" name="Sugar" id="sugarInput" placeholder="Sugar" step="1" required />
+          <div class="dropdown" id="sugarDropdown">
+            <p><span class="range normal"></span> Normal: 0–1</p>
+            <p><span class="range elevated"></span> Moderate: 2–3</p>
+            <p><span class="range high"></span> High: 4–5 (May indicate diabetes-related CKD)</p>
+          </div>
+        </div>
+
+        <!-- 🩸 Blood Glucose Random -->
+        <div class="dropdown-container">
+          <input type="number" name="Blood Glucose Random (mgs/dL)" id="glucoseInput" placeholder="Blood Glucose Random (mgs/dL)" required />
+          <div class="dropdown" id="glucoseDropdown">
+            <p><span class="range normal"></span> Normal: 70–140 mg/dL</p>
+            <p><span class="range elevated"></span> Prediabetes: 140–199 mg/dL</p>
+            <p><span class="range high"></span> High Risk: ≥200 mg/dL (CKD risk from diabetes)</p>
+          </div>
+        </div>
+
+        <!-- 💉 Blood Urea -->
+        <div class="dropdown-container">
+          <input type="number" name="Blood Urea (mgs/dL)" id="ureaInput" placeholder="Blood Urea (mgs/dL)" required />
+          <div class="dropdown" id="ureaDropdown">
+            <p><span class="range normal"></span> Normal: 7–20 mg/dL</p>
+            <p><span class="range elevated"></span> Moderate: 21–50 mg/dL</p>
+            <p><span class="range high"></span> High Risk: >50 mg/dL (Kidney malfunction)</p>
+          </div>
+        </div>
+
+        <!-- 🧬 Serum Creatinine -->
+        <div class="dropdown-container">
+          <input type="number" name="Serum Creatinine (mgs/dL)" id="creatinineInput" placeholder="Serum Creatinine (mgs/dL)" step="0.1" required />
+          <div class="dropdown" id="creatinineDropdown">
+            <p><span class="range normal"></span> Normal: 0.7–1.3 mg/dL</p>
+            <p><span class="range elevated"></span> Mild: 1.4–2.0 mg/dL</p>
+            <p><span class="range high"></span> High: >2.0 mg/dL (CKD indicator)</p>
+          </div>
+        </div>
+
+        <!-- 🩻 Hemoglobin -->
+        <div class="dropdown-container">
+          <input type="number" name="Hemoglobin (gms)" id="hbInput" placeholder="Hemoglobin (gms)" step="0.1" required />
+          <div class="dropdown" id="hbDropdown">
+            <p><span class="range low"></span> Low: <12 g/dL (Anemia common in CKD)</p>
+            <p><span class="range normal"></span> Normal: 12–16 g/dL</p>
+            <p><span class="range high"></span> High: >17 g/dL (Dehydration possible)</p>
+          </div>
+        </div>
+
+        <!-- 🩺 Hypertension -->
+        <div class="dropdown-container">
+          <input type="number" min="0" max="1" name="Hypertension: yes" id="htInput" placeholder="Hypertension (1=Yes, 0=No)" required />
+          <div class="dropdown" id="htDropdown">
+            <p><span class="range normal"></span> 0 = No (Normal BP control)</p>
+            <p><span class="range high"></span> 1 = Yes (Increases CKD risk)</p>
+          </div>
+        </div>
+
+        <!-- 🍭 Diabetes Mellitus -->
+        <div class="dropdown-container">
+          <input type="number" min="0" max="1" name="Diabetes Mellitus: yes" id="dmInput" placeholder="Diabetes Mellitus (1=Yes, 0=No)" required />
+          <div class="dropdown" id="dmDropdown">
+            <p><span class="range normal"></span> 0 = No (No diabetes detected)</p>
+            <p><span class="range high"></span> 1 = Yes (Diabetic nephropathy risk)</p>
+          </div>
+        </div>
+
+        <!-- 🩸 Anemia -->
+        <div class="dropdown-container">
+          <input type="number" min="0" max="1" name="Anemia: yes" id="anemiaInput" placeholder="Anemia (1=Yes, 0=No)" required />
+          <div class="dropdown" id="anemiaDropdown">
+            <p><span class="range normal"></span> 0 = No (Healthy RBC levels)</p>
+            <p><span class="range high"></span> 1 = Yes (Linked with CKD stages)</p>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="predict-btn">🔍 Predict CKD</button>
+          <button type="button" id="resetBtn" class="reset-btn">🔄 Reset</button>
+        </div>
+      </form>
+
+      <div id="resultArea" class="result-box" style="display:none;">
+        <h2>Prediction Result</h2>
+        <p id="predictionText"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

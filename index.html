@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CKD Detection | Home</title>
+
+  <!-- keep your main stylesheet -->
+  <link rel="stylesheet" href="/static/style.css" />
+
+  <!-- Inline override styles placed AFTER style.css so they take priority -->
+  <style>
+    /* ensure background is present */
+    body {
+      background: url("/static/kidney.png") no-repeat center center fixed !important;
+      background-size: cover !important;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+    }
+
+    /* main-content spacing (in case your style.css differs) */
+    .main-content {
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    /* Glass box: semi-transparent + blur fallback */
+    .glass {
+      width: 95%;
+      max-width: 900px;
+      background: rgba(0,0,0,0.45);                 /* visible fallback */
+      -webkit-backdrop-filter: blur(12px);           /* Safari / WebKit */
+      backdrop-filter: blur(12px);                   /* modern browsers */
+      border-radius: 18px;
+      padding: 36px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      transition: backdrop-filter 0.25s ease, transform 0.25s ease;
+      margin: 0 16px;
+    }
+
+    /* Slight hover increase for effect */
+    .glass:hover {
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      transform: translateY(-3px);
+    }
+
+    /* Ensure headings contrast */
+    .glass h1 { margin-top:0; color: #00e6ff; }
+    .subtitle { color: #ddd; margin-bottom: 18px; }
+
+    /* Keep the CTA button style but ensure visibility */
+    .predict-btn { 
+      display:inline-block;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: linear-gradient(90deg,#00c6ff,#00ffe1);
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,200,255,0.12);
+    }
+
+    /* small responsive tweak */
+    @media (max-width:600px) {
+      .glass { padding: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Nav (uses your style.css classes) -->
+  <nav class="navbar">
+    <h2>🧬 CKD Detector</h2>
+    <ul>
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/predict-page">Predict</a></li>
+      <li><a href="/data">Patient Data</a></li>
+      <li><a href="/settings">Settings</a></li>
+      <li><a href="/logout" class="logout-btn">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Info Section -->
+  <div class="main-content">
+    <div class="glass">
+      <h1>Chronic Kidney Disease (CKD)</h1>
+
+      <p class="subtitle">
+        Chronic Kidney Disease (CKD) is a long-term condition where the kidneys gradually lose function.
+        Early detection helps prevent complications and slows progression.
+      </p>
+
+      <h3 style="color:#00e6ff;">⚕️ Key Information</h3>
+      <ul style="text-align:left; line-height:1.8; color:#ddd; list-style:disc; margin-left:30px;">
+        <li>Kidneys filter waste and excess fluid from the blood.</li>
+        <li>CKD may cause fatigue, swelling, and changes in urination.</li>
+        <li>Common causes: diabetes, hypertension, and glomerulonephritis.</li>
+        <li>Early detection through blood and urine tests is crucial.</li>
+        <li>Lifestyle and medication can help maintain kidney health.</li>
+      </ul>
+
+      <div style="margin-top:22px;">
+        <a href="/predict-page" class="predict-btn">🔍 Start Prediction</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
