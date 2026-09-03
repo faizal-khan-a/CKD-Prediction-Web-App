@@ -1,0 +1,341 @@
+/* ===== Global ===== */
+body {
+  font-family: "Poppins", sans-serif;
+  background: url("/static/kidney.png") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  color: #00baff;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  background: linear-gradient(90deg, #00b4ff, #00ffd1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.logout-btn {
+  background: #ff4b4b;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #ff1f1f;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+/* ===== Main Container ===== */
+.main-content {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.container.glass {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 20px;
+  padding: 40px;
+  width: 95%;
+  max-width: 480px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  backdrop-filter: blur(18px);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.container h1 {
+  font-size: 26px;
+  background: linear-gradient(90deg, #00c6ff, #00ffe1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #e0e0e0;
+  margin-bottom: 25px;
+}
+
+/* ===== Form Styling ===== */
+.ckd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ckd-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ckd-form input:focus {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.03);
+  box-shadow: 0 0 12px #00c6ff;
+}
+
+/* ===== Buttons ===== */
+.btn-group {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.predict-btn,
+.reset-btn {
+  padding: 12px 25px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.predict-btn {
+  background: linear-gradient(90deg, #00c6ff, #00ffe1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+.reset-btn {
+  background: linear-gradient(90deg, #ff5858, #ff8c58);
+  box-shadow: 0 0 10px rgba(255, 140, 88, 0.4);
+}
+
+.predict-btn:hover,
+.reset-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ===== Result Box ===== */
+.result-box {
+  margin-top: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* ===== Dropdown Info Styling ===== */
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  margin-top: 5px;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown p {
+  padding: 10px 15px;
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.2s;
+}
+
+.dropdown p:last-child {
+  border-bottom: none;
+}
+
+.dropdown p:hover {
+  background: rgba(0, 255, 255, 0.15);
+}
+
+/* ===== Color Indicators ===== */
+.range {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.range.low {
+  background: #00ffe1;
+}
+.range.normal {
+  background: #00ff8f;
+}
+.range.elevated {
+  background: #ffd700;
+}
+.range.high {
+  background: #ff4b4b;
+}
+
+/* ===== Data Table (Patient Data Page) ===== */
+.data-container {
+  margin: 120px auto 60px;
+  width: 95%;
+  max-width: 1250px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.data-container h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #00ffe1;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  margin-bottom: 25px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+th,
+td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+
+th {
+  background: linear-gradient(90deg, #00c6ff, #00ffe1);
+  color: #000;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+tr:hover {
+  background: rgba(0, 255, 255, 0.15);
+}
+
+td {
+  color: #fff;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #ddd;
+  margin-top: 20px;
+}
+
+/* ===== Download Button ===== */
+.download-btn {
+  background: linear-gradient(90deg, #00c6ff, #00ffe1);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 15px auto;
+  display: block;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .container.glass {
+    width: 90%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+}
