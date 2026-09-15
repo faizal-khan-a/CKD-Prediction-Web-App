@@ -1,1 +1,65 @@
-Single-database configuration for Flask.
+# CKD Prediction Web App
+
+A Machine Learning-based web application that predicts the possibility of Chronic Kidney Disease (CKD) using clinical patient parameters.
+
+## Features
+
+- User registration and login
+- Patient data entry
+- CKD prediction using a trained Machine Learning model
+- Patient record management
+- Prediction results
+- PDF report generation
+- SQLite database
+- Flask web application
+
+## Technologies Used
+
+- Python
+- Flask
+- Flask-SQLAlchemy
+- Flask-Migrate
+- Flask-Mail
+- Pandas
+- Scikit-learn
+- Joblib
+- HTML
+- CSS
+- JavaScript
+- SQLite
+
+## Machine Learning
+
+The trained model uses clinical parameters such as:
+
+- Age
+- Blood Pressure
+- Specific Gravity
+- Albumin
+- Sugar
+- Blood Glucose
+- Blood Urea
+- Serum Creatinine
+- Hemoglobin
+- Hypertension
+- Diabetes Mellitus
+- Anemia
+
+The trained model is stored in `model.pkl`.
+
+## Project Structure
+
+```text
+CKD-Prediction-Web-App/
+├── app.py
+├── models.py
+├── train_model.py
+├── check_model.py
+├── model.pkl
+├── CKD_Preprocessed.csv
+├── requirements.txt
+├── alembic.ini
+├── migrations/
+│   └── versions/
+├── static/
+└── templates/
