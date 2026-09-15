@@ -10,7 +10,6 @@ The application also provides user authentication, patient record management, pr
 
 This project demonstrates the integration of Machine Learning, Python, Flask, database management, and frontend web technologies into a single application.
 
----
 
 ## 2. Problem Statement
 
@@ -20,7 +19,6 @@ The purpose of this project is to develop a web application that uses Machine Le
 
 The application is intended for educational and demonstration purposes.
 
----
 
 ## 3. Objectives
 
@@ -33,8 +31,6 @@ The main objectives of this project are:
 - To store patient information and prediction results.
 - To provide downloadable PDF reports.
 - To demonstrate the practical use of Machine Learning in a web application.
-
----
 
 ## 4. Technologies Used
 
@@ -53,7 +49,6 @@ The main objectives of this project are:
 | JavaScript | Frontend functionality |
 | SQLite | Database |
 
----
 
 ## 5. Machine Learning
 
@@ -78,7 +73,6 @@ The model uses the following clinical parameters:
 
 The Flask application loads the trained model and uses the entered clinical parameters to generate a prediction.
 
----
 
 ## 6. Dataset
 
@@ -90,7 +84,6 @@ The dataset contains clinical parameters used for Machine Learning development.
 
 The preprocessing stage prepares the data in a suitable format for training and prediction.
 
----
 
 ## 7. System Workflow
 
