@@ -1,90 +1,128 @@
 # 🩺 CKD Prediction Web App | Machine Learning + Flask
 
-## 📌 Project Overview
+## 1. 📌 Project Overview
 
-The **CKD Prediction Web App** is a Machine Learning-based web application developed to predict the possibility of **Chronic Kidney Disease (CKD)** using clinical patient parameters.
+The **CKD Prediction Web App** is a Machine Learning-based healthcare application developed to predict the possibility of **Chronic Kidney Disease (CKD)** using selected clinical parameters.
 
-The project combines **Machine Learning, Python, Flask, SQL database management, HTML, CSS, and JavaScript** into an interactive web application.
+The project combines **Machine Learning, Python, Flask, SQL/SQLite, HTML, CSS, and JavaScript** to create an interactive web-based prediction system.
 
-Users can enter patient clinical information through the web interface, and the trained Machine Learning model generates a prediction. The application also provides patient record management and PDF report generation.
+The application allows users to:
 
----
-
-## 🎯 Project Objective
-
-The main objective of this project is to develop a web-based system that can use clinical parameters to generate a CKD prediction.
-
-### Objectives
-
-- Build a Machine Learning model for CKD prediction.
-- Preprocess and prepare clinical data for model training.
-- Integrate the trained model with a Flask application.
-- Create an interactive patient data entry interface.
+- Create an account and sign in.
+- Enter patient clinical information.
+- Submit clinical parameters to the trained Machine Learning model.
+- Generate a CKD prediction.
 - Store patient information and prediction results.
-- Generate downloadable patient PDF reports.
-- Demonstrate the practical implementation of Machine Learning in a web application.
+- View patient-related records.
+- Generate a PDF report containing patient and prediction information.
+
+The main purpose of this project is to demonstrate how a Machine Learning model can be integrated into a complete web application rather than being used only as a standalone Python program.
+
+### Project Highlights
+
+- Machine Learning-based CKD prediction
+- Flask web application
+- Clinical data preprocessing
+- Trained model saved using Joblib
+- SQLite database integration
+- Patient record management
+- User authentication
+- PDF report generation
+- Flask-Migrate database migrations
+- Interactive web interface
+- End-to-end ML application workflow
 
 ---
 
-## 🧩 Problem Statement
+## 2. 🧩 Problem Statement
 
-Chronic Kidney Disease can develop gradually and may not always produce noticeable symptoms during its early stages.
+Chronic Kidney Disease is a condition in which the kidneys gradually lose their ability to function properly. Early identification of potential CKD can be useful because kidney-related conditions may develop gradually and may not always show obvious symptoms in their early stages.
 
-This project explores how Machine Learning can be used with selected clinical parameters to identify patterns associated with CKD and provide a prediction through a web-based application.
+Traditional diagnosis involves clinical evaluation, laboratory tests, medical history, and professional interpretation.
 
-The application is designed as an **educational and demonstration project** and is not intended to replace professional medical diagnosis.
+This project explores the use of **Machine Learning techniques to analyze selected clinical parameters and generate a CKD prediction**.
 
----
+The system provides a web-based interface where clinical values can be entered and processed by a trained Machine Learning model.
 
-## 📊 Dataset
+The project demonstrates how data preprocessing, Machine Learning, database management, and web development can be combined to create an end-to-end predictive application.
 
-The project uses a preprocessed clinical dataset:
-
-**Dataset:** `CKD_Preprocessed.csv`
-
-The dataset contains clinical parameters used for Machine Learning development.
-
-### Clinical Parameters
-
-| Parameter | Description |
-|---|---|
-| Age | Patient age |
-| Blood Pressure | Patient blood pressure |
-| Specific Gravity | Urine specific gravity |
-| Albumin | Albumin level |
-| Sugar | Sugar level |
-| Blood Glucose | Random blood glucose level |
-| Blood Urea | Blood urea level |
-| Serum Creatinine | Serum creatinine level |
-| Hemoglobin | Hemoglobin level |
-| Hypertension | Hypertension status |
-| Diabetes Mellitus | Diabetes status |
-| Anemia | Anemia status |
+> **Note:** This application is an educational and demonstration project. It is not a medical diagnostic system and should not be used as a replacement for professional medical advice.
 
 ---
 
-## 🛠️ Technologies Used
+## 3. 🎯 Objectives
+
+The major objectives of the project are:
+
+### Machine Learning Objectives
+
+- Develop a Machine Learning model for CKD prediction.
+- Prepare and preprocess clinical data.
+- Select relevant clinical parameters for prediction.
+- Train the model using the prepared dataset.
+- Save the trained model for application integration.
+- Use the trained model to generate predictions from new patient data.
+
+### Web Application Objectives
+
+- Develop a user-friendly web interface using Flask.
+- Provide registration and login functionality.
+- Create a patient information form.
+- Connect the web application with the Machine Learning model.
+- Display prediction results to the user.
+- Store patient information and prediction results.
+- Generate patient PDF reports.
+
+### Database Objectives
+
+- Store patient-related information.
+- Manage application data using SQLite.
+- Define database models using Flask-SQLAlchemy.
+- Manage database schema changes using Flask-Migrate and Alembic.
+
+### Learning Objectives
+
+This project provides practical experience in:
+
+- Python programming
+- Data preprocessing
+- Machine Learning
+- Flask development
+- SQL/database concepts
+- HTML/CSS/JavaScript
+- Model integration
+- CRUD-style database operations
+- Application deployment concepts
+
+---
+
+## 4. 🛠️ Technologies Used
 
 | Technology | Purpose |
 |---|---|
-| Python | Programming and Machine Learning |
-| Pandas | Data preprocessing |
-| Scikit-learn | Machine Learning |
-| Joblib | Model serialization |
-| Flask | Web application |
+| Python | Application development and Machine Learning |
+| Pandas | Data loading and preprocessing |
+| Scikit-learn | Machine Learning model development |
+| Joblib | Saving and loading the trained model |
+| Flask | Backend web application framework |
 | Flask-SQLAlchemy | Database integration |
-| Flask-Migrate | Database migrations |
-| Flask-Mail | Email functionality |
-| SQLite | Database |
-| HTML | Frontend structure |
-| CSS | Frontend styling |
-| JavaScript | Frontend interaction |
+| Flask-Migrate | Database migration management |
+| Alembic | Database schema migration |
+| Flask-Mail | Email-related functionality |
+| SQLite | Application database |
+| HTML | Web page structure |
+| CSS | Web page styling |
+| JavaScript | Client-side interaction |
+| PDFKit | PDF generation |
+| Git/GitHub | Version control and project hosting |
 
 ---
 
-## 🤖 Machine Learning
+## 5. 🤖 Machine Learning
 
-The trained Machine Learning model is stored as:
+The Machine Learning component is responsible for generating the CKD prediction based on clinical input parameters.
+
+The trained model is stored in:
 
 ```text
 model.pkl
