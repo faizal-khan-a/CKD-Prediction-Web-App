@@ -94,7 +94,6 @@ The preprocessing stage prepares the data in a suitable format for training and 
 
 ## 7. System Workflow
 
-```text
 Patient Information
         ↓
 Web Form
