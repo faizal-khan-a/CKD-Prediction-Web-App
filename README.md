@@ -14,7 +14,6 @@ The project follows an end-to-end workflow:
 
 > **Note:** This project is developed for educational and demonstration purposes. It is not intended to provide medical diagnosis or replace professional medical advice.
 
-![CKD Prediction Web App](screenshots/home.png)
 
 ---
 
