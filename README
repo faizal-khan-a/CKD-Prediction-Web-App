@@ -284,8 +284,6 @@ Provides patient prediction reports in PDF format.
 
 Provides an options page for available application preferences.
 
----
-
 ## 🖼️ Application Screenshots
 
 ### 🏠 Home Page
@@ -311,8 +309,8 @@ Provides an options page for available application preferences.
 ### ⚙️ Settings
 
 ![Settings](screenshots/settings.png)
----
 
+---
 ## 🛠️ Tools & Technologies
 
 | Tool / Technology | Purpose |
