@@ -2,7 +2,7 @@
 
 ## 📊 Project Overview
 
-The **CKD Prediction Web App** is a Machine Learning-based web application developed to predict the possibility of Chronic Kidney Disease (CKD) based on selected clinical parameters.
+The **CKD Prediction Web App** is a Machine Learning-based web application developed to predict the possibility of **Chronic Kidney Disease (CKD)** based on selected clinical parameters.
 
 The project combines **Machine Learning, Python, Flask, SQLite, SQLAlchemy, HTML, CSS, JavaScript, and PDF reporting** into an end-to-end web application.
 
@@ -13,6 +13,8 @@ The project follows an end-to-end workflow:
 **Clinical Data → Data Preprocessing → Machine Learning Model → Flask Application → Prediction → Patient Record → PDF Report**
 
 > **Note:** This project is developed for educational and demonstration purposes. It is not intended to provide medical diagnosis or replace professional medical advice.
+
+![CKD Prediction Web App](screenshots/home.png)
 
 ---
 
@@ -41,7 +43,7 @@ The application aims to:
 
 ## 🎯 Project Objectives
 
-### Machine Learning
+### 🤖 Machine Learning
 
 - Prepare the CKD dataset
 - Preprocess the input data
@@ -52,7 +54,7 @@ The application aims to:
 - Verify the model input feature structure
 - Generate prediction results from user-provided data
 
-### Web Application
+### 🌐 Web Application
 
 - Create a Flask-based web application
 - Provide user registration
@@ -65,7 +67,7 @@ The application aims to:
 - Generate PDF reports
 - Provide application settings
 
-### Database
+### 🗄️ Database
 
 - Use SQLite for data storage
 - Use Flask-SQLAlchemy for database interaction
@@ -80,7 +82,10 @@ The application aims to:
 ### CKD Dataset
 
 The project uses a preprocessed CKD dataset stored in:
-`CKD_Preprocessed.csv`
+
+```text
+CKD_Preprocessed.csv
+```
 
 The dataset contains clinical parameters that are used to train the Machine Learning model.
 
@@ -121,17 +126,25 @@ The CKD dataset was prepared before training the Machine Learning model.
 - Saved the trained model using Joblib
 - Verified the saved model structure
 
-The trained model is saved as: `model.pkl`
+The trained model is saved as:
+
+```text
+model.pkl
+```
 
 ---
 
 ## 🤖 Machine Learning Model
 
-The Machine Learning component is implemented using Python and Scikit-learn.
+The Machine Learning component is implemented using **Python and Scikit-learn**.
 
-* **Training File:** `train_model.py` — Responsible for loading the dataset, preparing features, training the model, and saving the output.
-* **Saved Model:** `model.pkl` — Loaded by the Flask application when a prediction request is received.
-* **Model Verification:** `check_model.py` — Used to verify the trained model and its expected input structure.
+| Component | Purpose |
+|---|---|
+| `train_model.py` | Responsible for loading the dataset, preparing features, training the model, and saving the output |
+| `model.pkl` | Saved Machine Learning model loaded by the Flask application |
+| `check_model.py` | Used to verify the trained model and its expected input structure |
+
+The trained model expects the clinical parameters described in the **Model Input Features** section.
 
 ---
 
@@ -139,8 +152,23 @@ The Machine Learning component is implemented using Python and Scikit-learn.
 
 The application collects the following clinical information:
 
-* **Numerical Parameters:** Age, Blood Pressure, Specific Gravity, Albumin, Sugar, Blood Glucose Random, Blood Urea, Serum Creatinine, Hemoglobin
-* **Categorical Parameters:** Hypertension, Diabetes Mellitus, Anemia
+### Numerical Parameters
+
+- Age
+- Blood Pressure
+- Specific Gravity
+- Albumin
+- Sugar
+- Blood Glucose Random
+- Blood Urea
+- Serum Creatinine
+- Hemoglobin
+
+### Categorical Parameters
+
+- Hypertension
+- Diabetes Mellitus
+- Anemia
 
 The Flask application prepares these values in the required format before sending them to the Machine Learning model.
 
@@ -170,86 +198,146 @@ Display Prediction Result
 Store / View Patient Record
   ↓
 Generate PDF Report
-Component,Purpose
-app.py,Main Flask application
-models.py,Database models
-train_model.py,Model training
-check_model.py,Model verification
-model.pkl,Saved Machine Learning model
-CKD_Preprocessed.csv,Preprocessed dataset
-templates/,HTML pages
-static/,"CSS, JavaScript, and images"
-migrations/,Database migration files
-Page,Purpose
-index.html,Home page
-signup.html,User registration
-signin.html,User sign-in
-login.html,Login interface
-patient_data.html,Patient data entry
-predict.html,Prediction result
-patient_pdf.html,PDF report
-settings.html,Application settings
-Database
+```
+
+---
+
+## 📋 Project Components
+
+| Component | Purpose |
+|---|---|
+| `app.py` | Main Flask application |
+| `models.py` | Database models |
+| `train_model.py` | Machine Learning model training |
+| `check_model.py` | Model verification |
+| `model.pkl` | Saved Machine Learning model |
+| `CKD_Preprocessed.csv` | Preprocessed dataset |
+| `templates/` | HTML pages |
+| `static/` | CSS, JavaScript, and images |
+| `migrations/` | Database migration files |
+
+---
+
+## 📄 Application Pages
+
+| File | Purpose |
+|---|---|
+| `index.html` | Home page |
+| `signup.html` | User registration |
+| `signin.html` | User sign-in |
+| `login.html` | Login interface |
+| `patient_data.html` | Patient data entry |
+| `predict.html` | Prediction result |
+| `patient_pdf.html` | PDF report |
+| `settings.html` | Application settings |
+
+---
+
+## 🗄️ Database
+
 SQLite is used as the database for storing application data.
 
 The project uses:
 
-SQLite
+- **SQLite**
+- **Flask-SQLAlchemy**
+- **Flask-Migrate**
+- **Alembic**
 
-Flask-SQLAlchemy
+### Database Features
 
-Flask-Migrate
+- User information management
+- Patient record storage
+- Clinical parameter storage
+- Database schema management
+- Migration support maintained inside the `migrations/` directory
 
-Alembic
+---
 
-Database Features
-User information management
+## 📊 Application Features
 
-Patient record storage
+### 🔬 CKD Prediction
 
-Clinical parameter storage
+Uses the trained Machine Learning model to generate a CKD prediction based on selected clinical parameters.
 
-Database schema management
+### 👤 User Registration
 
-Migration support (maintained inside migrations/)
+Users can create an account before accessing the application.
 
-📊 Application Features
-🔬 CKD Prediction: Uses the trained Machine Learning model to generate a CKD prediction based on selected clinical parameters.
+### 🔐 User Sign In
 
-👤 User Registration: Users can create an account before accessing the application.
+Provides user sign-in functionality.
 
-🔐 User Authentication: Secure sign-in functionality.
+### 🧑‍⚕️ Patient Data Entry
 
-🧑‍⚕️ Patient Data Entry: Form for entering required clinical parameters.
+Provides a form for entering the required clinical parameters.
 
-📋 Patient Records: Patient information and prediction-related records can be stored and viewed.
+### 📋 Patient Records
 
-📄 PDF Reports: Downloadable patient prediction reports in PDF format.
+Patient information and prediction-related records can be stored and viewed.
 
-⚙️ Settings: Options page for custom application preferences.
+### 📄 PDF Reports
 
-🖼️ Application Screenshots
-🏠 Home Page
-🔐 Sign In Page
-🧑‍⚕️ Patient Data Entry
-🤖 Prediction Result
-📋 Patient Records
-⚙️ Settings
-Tool / Technology,Purpose
-Python,Application and Machine Learning development
-Pandas,Data processing
-Scikit-learn,Machine Learning algorithms
-Joblib,Model serialization
-Flask,Web application framework
-Flask-SQLAlchemy,Database integration
-Flask-Migrate,Database migrations
-Alembic,Database migration management
-SQLite,Database storage
-HTML,Web page structure
-CSS,Web page styling
-JavaScript,Front-end interactivity
-PDFKit,PDF report generation
-Git / GitHub,Version control & repository hosting
+Provides patient prediction reports in PDF format.
+
+### ⚙️ Settings
+
+Provides an options page for available application preferences.
+
+---
+
+## 🖼️ Application Screenshots
+
+### 🏠 Home Page
+
+![Home Page](screenshots/home.png)
+
+### 🔐 Sign In Page
+
+![Sign In Page](screenshots/signin.png)
+
+### 🧑‍⚕️ Patient Data Entry
+
+![Patient Data](screenshots/patient_data.png)
+
+### 🤖 Prediction Result
+
+![Prediction Result](screenshots/prediction.png)
+
+### 📋 Patient Records
+
+![Patient Records](screenshots/patient_records.png)
+
+### ⚙️ Settings
+
+![Settings](screenshots/settings.png)
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Tool / Technology | Purpose |
+|---|---|
+| Python | Application and Machine Learning development |
+| Pandas | Data processing |
+| Scikit-learn | Machine Learning algorithms |
+| Joblib | Model serialization |
+| Flask | Web application framework |
+| Flask-SQLAlchemy | Database integration |
+| Flask-Migrate | Database migrations |
+| Alembic | Database migration management |
+| SQLite | Database storage |
+| HTML | Web page structure |
+| CSS | Web page styling |
+| JavaScript | Front-end interactivity |
+| PDFKit | PDF report generation |
+| Git / GitHub | Version control and repository hosting |
+
+---
+
+## 📂 Project Structure
+
+```text
 CKD-Prediction-Web-App/
 │
 ├── README.md
@@ -295,96 +383,160 @@ CKD-Prediction-Web-App/
     ├── prediction.png
     ├── signin.png
     └── settings.png
-⚙️ Installation & Setup
-Clone the Repository
+```
 
-Bash
-git clone [https://github.com/faizal-khan-a/CKD-Prediction-Web-App.git](https://github.com/faizal-khan-a/CKD-Prediction-Web-App.git)
-Navigate to the Project
+---
 
-Bash
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/faizal-khan-a/CKD-Prediction-Web-App.git
+```
+
+### 2. Navigate to the Project
+
+```bash
 cd CKD-Prediction-Web-App
-Create a Virtual Environment
+```
 
-Bash
+### 3. Create a Virtual Environment
+
+```bash
 python -m venv venv
-Activate the Virtual Environment
+```
 
-Windows PowerShell:
+### 4. Activate the Virtual Environment
 
-PowerShell
+**Windows PowerShell:**
+
+```powershell
 venv\Scripts\activate
+```
+
 If you receive an execution policy error:
 
-PowerShell
+```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-venv\Scripts\activate
-Install Dependencies
+```
 
-Bash
+Then activate the environment:
+
+```powershell
+venv\Scripts\activate
+```
+
+### 5. Install Dependencies
+
+```bash
 pip install -r requirements.txt
-▶️ How to Run the Application
+```
+
+---
+
+## ▶️ How to Run the Application
+
 After installing the dependencies, run:
 
-Bash
+```bash
 python app.py
-The Flask application will start locally. Open your browser and visit:
+```
 
-Plaintext
-[http://127.0.0.1:5000](http://127.0.0.1:5000)
-🔬 How the Application Works
-User Registration: The user creates an account through the Sign Up page.
+The Flask application will start locally.
 
-Sign In: The user signs into the application.
+Open your browser and visit:
 
-Patient Data Entry: The user enters the required clinical parameters.
+```text
+http://127.0.0.1:5000
+```
 
-Data Preparation: The Flask application prepares the entered values according to the Machine Learning model's expected feature structure.
+---
 
-Model Prediction: The saved model.pkl file is loaded and used to generate the prediction.
+## 🔬 How the Application Works
 
-Display Result: The prediction result is displayed to the user.
+### 1. User Registration
 
-Store Patient Record: The patient information can be stored in the SQLite database.
+The user creates an account through the **Sign Up** page.
 
-Generate PDF: A patient report can be generated in PDF format.
+### 2. Sign In
 
-📌 Key Project Highlights
-End-to-end Machine Learning web application
+The user signs into the application.
 
-Flask-based backend architecture
+### 3. Patient Data Entry
 
-Scikit-learn Machine Learning model serialized using Joblib
+The user enters the required clinical parameters.
 
-SQLite database integration with SQLAlchemy ORM, Flask-Migrate, and Alembic
+### 4. Data Preparation
 
-User registration and authentication workflows
+The Flask application prepares the entered values according to the Machine Learning model's expected feature structure.
 
-Clinical parameter input form and prediction pipeline
+### 5. Model Prediction
 
-Patient record management and PDF report generation
+The saved `model.pkl` file is loaded and used to generate the prediction.
 
-🚀 Future Enhancements
-Add model accuracy and evaluation metrics (Confusion Matrix, ROC Curve)
+### 6. Display Result
 
-Compare multiple Machine Learning algorithms (Random Forest, XGBoost)
+The prediction result is displayed to the user.
 
-Add prediction probabilities and confidence scores
+### 7. Store Patient Record
 
-Add patient history search, filtering, and graphical analytics
+The patient information can be stored in the SQLite database.
 
-Deploy the application to cloud platforms (AWS / Heroku / Azure)
+### 8. Generate PDF
 
-⚠️ Disclaimer
-This project is developed for educational and demonstration purposes only.
+A patient report can be generated in PDF format.
 
-The predictions generated by this application should not be considered a medical diagnosis and should not be used as a substitute for consultation with a qualified healthcare professional. The application demonstrates technical integration between Machine Learning and a web application framework.
+---
 
-👨‍💻 Author
-Faizal Khan
+## 📌 Key Project Highlights
+
+- End-to-end Machine Learning web application
+- Flask-based backend architecture
+- Scikit-learn Machine Learning model serialized using Joblib
+- SQLite database integration with SQLAlchemy ORM
+- Flask-Migrate and Alembic database migration support
+- User registration and authentication workflows
+- Clinical parameter input form
+- Machine Learning prediction pipeline
+- Patient record management
+- PDF report generation
+- Web-based application interface
+
+---
+
+## 🚀 Future Enhancements
+
+Possible future improvements include:
+
+- Add model accuracy and evaluation metrics such as Confusion Matrix and ROC Curve
+- Compare multiple Machine Learning algorithms
+- Add prediction probabilities where supported by the trained model
+- Add patient history search and filtering
+- Add graphical patient analytics
+- Improve input validation
+- Deploy the application to a cloud platform
+- Improve the PDF report design
+- Add explainable AI techniques
+
+---
+
+## ⚠️ Disclaimer
+
+This project is developed for **educational and demonstration purposes only**.
+
+The predictions generated by this application should not be considered a medical diagnosis and should not be used as a substitute for consultation with a qualified healthcare professional.
+
+The application demonstrates the technical integration of Machine Learning with a web application framework.
+
+---
+
+## 👨‍💻 Author
+
+**Faizal Khan**
 
 B.E. – Artificial Intelligence & Data Science
 
-GitHub: faizal-khan-a
+**GitHub:** `faizal-khan-a`
 
-Project Repository: CKD-Prediction-Web-App
+**Project:** `CKD-Prediction-Web-App`
